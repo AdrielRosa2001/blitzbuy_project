@@ -1,0 +1,15 @@
+<div class="w-100 d-flex flex-row justify-content-arrownd align-items-center rounded border mb-2 p-2 shadow-sm">
+    <!-- <div class="pe-2" style="width: 20%;">
+        <img class="rounded-6" src="https://marcafortaleza.b-cdn.net/wp-content/uploads/2022/04/mkp_Fortaleza_Reduc_cream_cracker_350g-1581px-1.png" alt="Exemplo de produto" style="width: 100%;">
+    </div> -->
+    <div class="d-flex flex-row justify-content-between p-2" style="width: 100%;">
+        <div class="d-flex flex-column" style="width: 75%;">
+            <span class="fw-semibold fs-5 text-truncate" style="max-width: 95%;">{{produto.produto.nome_produto}}</span>
+            <span class="text-truncate" style="max-width: 95%;">{{produto.produto.categoria.nome_categoria}}</span>
+        </div>
+        <div class="d-flex flex-column" style="width: 25%;">
+            <span>Qte: {{produto.quant_produto}}</span>
+            <span class="fw-semibold fs-6">R$ {{produto.valor_produto|floatformat:2}}</span>
+        </div>
+    </div>
+</div>

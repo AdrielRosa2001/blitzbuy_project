@@ -1,0 +1,51 @@
+{% if not fluxo_de_rotinas %}
+    <div class="nenhum-produto w-100 d-flex flex-column align-items-center justify-content-center">
+        <div class="p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#0d6efd" class="bi bi-bag-heart" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+            </svg>
+        </div>
+        <span class="fw-semibold text-primary text-center mb-3">
+            Nenhum produto ainda foi adicionado!
+        </span>
+        <span class="text-center">
+            Adicione algum produto agora mesmo clicando em "Adicionar Produto".
+        </span>
+    </div>
+{% else %}
+    <div class="accordion w-100" id="accordionPanelsStayOpenExample">
+        {% for categoria in categorias_contidas %}
+            <div class="accordion-item block-category">
+                <input class="id-categoria-dropp" id="id-categoria-dropp" type="hidden" value="{{categoria.categoria.id}}">
+                <h2 class="accordion-header">
+                    <button class="accordion-button {% if not categoria.colapse_categoria %} collapsed {% endif %}" type="button" id="btn-categoria-collapse-{{categoria.categoria.id}}" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseCategoryId-{{categoria.categoria.id}}" aria-expanded="true" aria-controls="panelsStayOpen-collapseCategoryId-{{categoria.categoria.id}}">
+                        <div class="donut-chart-container">
+                            <svg class="donut-chart" width="30" height="30" viewBox="0 0 42 42">
+                                <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954"></circle>
+                                <circle class="donut-segment donut-segment-{{categoria.categoria.id}}" cx="21" cy="21" r="15.91549430918954"></circle>
+                            </svg>
+                            <!-- <div class="donut-text">
+                                <span id="quantity">2/10</span>
+                            </div> -->
+                        </div>
+                        <span class="ms-2 fw-semibold" id="count-prod-rotina-{{categoria.categoria.id}}">
+                            0/0
+                        </span>
+                        <span class="ms-2 fw-semibold fs-6">
+                            {{categoria.categoria.nome_categoria}}
+                        </span>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseCategoryId-{{categoria.categoria.id}}" class="panelsStayOpen-collapseCategoryId-{{categoria.categoria.id}} accordion-collapse collapse {% if categoria.colapse_categoria %} show {% endif %}">
+                    <div class="accordion-body accordion-body-{{categoria.categoria.id}}" style="padding: 10px !important;">
+                        {% for produto in fluxo_de_rotinas %}
+                            {% if categoria.categoria.nome_categoria == produto.produto.categoria.nome_categoria %}
+                                {% include 'app/components/rotina_page/elements/produto_unico_rotina.html' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

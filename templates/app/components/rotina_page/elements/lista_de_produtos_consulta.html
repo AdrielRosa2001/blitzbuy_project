@@ -1,0 +1,3 @@
+{% for produto in produtos_localizados %}
+    <option value="{{produto.id}}" onclick="definindoProduto('{{produto.nome_produto}}', '{{produto.categoria.id}}')">{{produto.nome_produto}}</option>
+{% endfor %}

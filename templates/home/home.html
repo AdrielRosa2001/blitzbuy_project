@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} BlitzBuy - Suas compras mais inteligentes {% endblock %}
+{% block content %}
+
+{% include 'home/components/nav.html' %}
+
+<!-- Hero Section -->
+<header class="bg-primary bg-gradient text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Organize suas compras de forma inteligente</h1>
+                <p class="lead mb-4">Crie listas de compras dinâmicas, acompanhe seus gastos em tempo real e economize tempo no supermercado.</p>
+                <a href="#começar" class="btn btn-light btn-lg mb-3 fw-bold text-primary">Comece Agora - É Grátis!</a>
+            </div>
+            <div class="col-lg-6" style="height: 500px;">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.41/build/spline-viewer.js"></script>
+                <spline-viewer url="https://prod.spline.design/8T71MX5uzXlcyYpd/scene.splinecode"></spline-viewer>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Funcionalidades Section -->
+<section id="funcionalidades" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Funcionalidades Principais</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-primary">
+                    <div class="card-body text-center">
+                        <i class="fas fa-list-check text-primary fa-3x mb-3"></i>
+                        <h5 class="card-title">Listas Organizadas</h5>
+                        <p class="card-text">Crie listas personalizadas para cada local de compra e organize os produtos por categorias.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-primary">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calculator text-primary fa-3x mb-3"></i>
+                        <h5 class="card-title">Controle de Gastos</h5>
+                        <p class="card-text">Acompanhe em tempo real o valor total das suas compras enquanto adiciona os produtos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-primary">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-primary fa-3x mb-3"></i>
+                        <h5 class="card-title">Fácil de Usar</h5>
+                        <p class="card-text">Interface intuitiva e responsiva para usar em qualquer dispositivo, onde estiver.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefícios Section -->
+<section id="beneficios" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <img src="https://www.strongpoint.com/app/uploads/2022/08/retail-tech12.jpg" alt="Benefícios do App" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6 pt-3">
+                <h2 class="mb-4">Por que usar o BlitzBuy?</h2>
+                <div class="d-flex mb-3">
+                    <i class="fas fa-check text-primary fa-2x me-3"></i>
+                    <div>
+                        <h5>Economize Tempo</h5>
+                        <p>Listas organizadas por categorias facilitam sua navegação no supermercado.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-3">
+                    <i class="fas fa-check text-primary fa-2x me-3"></i>
+                    <div>
+                        <h5>Controle Financeiro</h5>
+                        <p>Acompanhe seus gastos e mantenha-se dentro do orçamento planejado.</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <i class="fas fa-check text-primary fa-2x me-3"></i>
+                    <div>
+                        <h5>Praticidade</h5>
+                        <p>Acesse suas listas de qualquer lugar e mantenha tudo organizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section id="começar" class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Pronto para organizar suas compras?</h2>
+        <p class="lead mb-4">Comece agora mesmo a criar suas listas de compras inteligentes</p>
+        <a class="btn btn-light btn-lg fw-bold text-primary" style="text-decoration: none;" href="{% url 'login_page' %}">Criar Minha Primeira Lista</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2024 BlitzBuy. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+{% endblock %}

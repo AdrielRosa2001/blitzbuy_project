@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="finalizarRotinaModal" tabindex="-1" aria-labelledby="finalizarRotinaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-truncate" id="finalizarRotinaModalLabel">Finalizar Rotina: {{rotina.local_de_compra}}</h1>
+          <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column align-items-center justify-content-center text-center mb-3 mt-3">
+            <div class="text-success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+              </svg>
+            </div>
+            <h2>Você realmente deseja finalizar essa lista?</h2>
+          </div>
+            <form class="form-finalizar-rotina">
+                {% csrf_token %}
+                <input type="hidden" name="rotina_id" value="{{rotina.id}}">
+                <button type="submit" class="btn-adicionar-produto w-100 mb-2 btn btn-success" id="finalizarRotinaBtn" data-bs-dismiss="modal">Finalizar Compras</button> <!-- data-bs-dismiss="modal" -->
+                <button type="reset" class="w-100 mb-2 btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<a  class="rotina-unica mb-3 p-2 border border-tirtle bg-white rounded shadow w-100 d-flex flex-row align-items-center justify-content-between" 
+    style="color: black; cursor: pointer; text-decoration: none;" 
+    {% if rotina.status_rotina.nome_status == "PENDENTE" %} 
+        href="{{rotina.id}}/show_rotina" 
+    {% elif rotina.status_rotina.nome_status == "CONCLUIDA" %} 
+        href="{{rotina.id}}/visualizar_rotina_concluida" 
+    {% endif %}>
+    <input type="hidden" name="id_rotina" value="{{rotina.id}}">
+    <span class="d-flex flex-column">
+        <h6><small><span class="fw-normal">Iniciada em:</span></small> <span style="font-size: 13px;">{{rotina.iniciada_em}}</span></h6>
+        <h6><small><span class="fw-normal">Local:</span></small> <span style="font-size: 20px;">{{rotina.local_de_compra}}</span></h6>
+        <h6><small><span class="fw-normal">Status:</span> </small> <span class="badge" style="background-color: {{ rotina.status_rotina.cor_status }};">{{rotina.status_rotina.nome_status}}</span></h6>  <!--  <span style="background-color: {{ rotina.status_rotina.cor_status }} ; color: white; font-size: 10px; font-weight: 500; padding-left: 6px; padding-right: 6px; padding-top: 2px; padding-bottom: 2px; border-radius: 5px;"''>{{rotina.status_rotina.nome_status}}</span>  -->
+    </span>
+    <span class="d-flex flex-column">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+        </svg>
+    </span>
+</a>

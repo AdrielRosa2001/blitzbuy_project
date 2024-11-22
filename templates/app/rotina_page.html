@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Lista de compras {% endblock %}
+{% block content %}
+{% include 'app/components/navbar.html' %}
+<div class="body_page bg-body-secondary w-100 h-100 pt-2 d-flex flex-column align-items-center">
+    <div class="container">
+        <div class="d-flex flex-row align-items-center mt-2">
+            <a class="fw-semibold" href="{% url 'main' %}" style="text-decoration: none; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                </svg>
+                <span class="ms-2">Home</span>
+            </a>
+        </div>
+        <div class="head-rotina mt-3 p-2 ps-3 bg-white rounded shadow w-100 d-flex flex-row align-items-start justify-content-between">
+            <div class="d-flex flex-column" id="conteudo-head-rotina">
+                {% include 'app/components/rotina_page/elements/conteudo_head_rotina.html' %}
+            </div>
+            <div>
+                {% include 'app/components/rotina_page/elements/dropdown_options_rotina.html' %}
+            </div>
+        </div>
+
+        <!-- Includindo display de produtos da rotina -->
+
+        <div class="fluxo-display mt-3 p-3 bg-white rounded shadow w-100 d-flex flex-column align-items-center justify-content-between">
+            {% include 'app/components/rotina_page/elements/display_produtos_rotina.html' %}
+        </div>
+        <div style="width: 100% !important; height: 80px !important;">
+            <!-- Ganho de espaço para o botão de adicionar produto -->
+        </div>
+    </div>
+    <div class="dropdown position-fixed bottom-0 end-0 pb-3 pt-3 p-2 bd-mode-toggle bg-white w-100" >
+        <div class="d-flex flex-row">
+            <button type="button" class="btn btn-success w-50 me-2" data-bs-toggle="modal" data-bs-target="#finalizarRotinaModal" >Finalizar</button>
+            <button class="btn btn-primary py-2 d-flex align-items-center w-50" id="add-produto" type="button" data-bs-toggle="modal" data-bs-target="#addProdutoModal">
+                <span class="ms-2">Adicionar Produto</span>
+            </button>
+        </div>
+      </div>
+</div>
+
+<!-- include modais -->
+{% include 'app/components/rotina_page/modals/modal_adicionar_produto.html' %}
+
+{% include 'app/components/rotina_page/modals/modal_ver_produto.html' %}
+
+{% include 'app/components/rotina_page/modals/modal_excluir_rotina.html' %}
+
+{% include 'app/components/rotina_page/modals/modal_finalizar_rotina.html' %}
+
+
+<!-- include toasts -->
+{% include 'app/components/toast.html' %}
+
+{% endblock %}
+{% block js %}
+<script defer src="{% static 'js/rotina_page/rotina_page.js' %}"></script>
+<script defer src="{% static 'js/rotina_page/adicionar_produtos.js' %}"></script>
+<script defer src="{% static 'js/rotina_page/ver_produto_rotina.js' %}"></script>
+<script defer src="{% static 'js/rotina_page/finalizar_rotina.js' %}"></script>
+
+<script>
+    function redirect_main(){
+        window.location.href = "{% url 'main' %}";
+    };
+    const excluirRotina = async (data) => {
+    const response = await fetch(`/app/${data.rotina_id}/delete_rotina`);
+    const html = await response.text();
+    
+    window.location.href = "{% url 'main' %}";
+    };
+
+    (function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sua função aqui
+            setAllDonauts();
+        });
+    })();
+
+
+
+</script>
+{% endblock %}

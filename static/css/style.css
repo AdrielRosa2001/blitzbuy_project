@@ -1,0 +1,54 @@
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: hidden;
+    /* overflow-x: hidden; */
+}
+.rotina-unica {
+    transition: 0.3s;
+}
+
+.rotina-unica:hover {
+    background-color: #d4d5d6 !important;
+}
+.c-pointer{
+    cursor: pointer !important;
+}
+.checked-item-list {
+    color: #8a8a8a !important;
+    text-decoration: line-through !important;
+}
+
+#editable-input{
+    display: none; /* Escondemos o input inicialmente */
+}
+
+
+.donut-chart-container {
+    position: relative;
+    display: inline-block;
+    width: 30px; /* Ajuste do tamanho */
+    height: 30px; /* Ajuste do tamanho */
+}
+
+.donut-chart {
+    transform: rotate(-90deg); /* Rotaciona o círculo para começar de cima */
+    width: 100%;
+    height: 100%;
+}
+
+.donut-ring {
+    fill: transparent;
+    stroke: #eee;
+    stroke-width: 2.5; /* Espessura reduzida para o tamanho menor */
+}
+
+.donut-segment {
+    fill: transparent;
+    stroke: #0D6EFD;
+    stroke-width: 8; /* Espessura reduzida para o tamanho menor */
+    stroke-dasharray: 0 100; /* Inicialmente vazio */
+    transition: stroke-dasharray 0.5s;
+}

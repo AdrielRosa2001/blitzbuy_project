@@ -1,0 +1,15 @@
+<!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
+ {% load static %}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToastNewRotina" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="{% static 'assets/blitzbuy_secondary_ico.ico' %}" alt="Logo" width="20" height="20" class="rounded me-2">
+      <strong class="me-auto">BlitzBuy</strong>
+      <small>Agora</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Uma nova rotina foi criada com sucesso!
+    </div>
+  </div>
+</div>

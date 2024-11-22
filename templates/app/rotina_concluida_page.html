@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Lista concluída {% endblock %}
+{% block content %}
+{% include 'app/components/navbar.html' %}
+<div class="body_page bg-body-secondary w-100 h-100 pt-2 d-flex flex-column align-items-center">
+    <div class="container">
+        <div class="d-flex flex-row align-items-center mt-2">
+            <a class="fw-semibold" href="{% url 'main' %}" style="text-decoration: none; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                </svg>
+                <span class="ms-2">Home</span>
+            </a>
+        </div>
+        {% include 'app/components/rotina_ready_page/elements/table_of_products.html' %}
+    </div>
+</div>
+
+<!-- include modais -->
+{% include 'app/components/rotina_ready_page/modals/modal_excluir_rotina_pronta.html' %}
+
+
+<!-- include toasts -->
+{% include 'app/components/toast.html' %}
+
+{% endblock %}
+{% block js %}
+<script defer src="{% static 'js/rotina_page/rotina_page.js' %}"></script>
+<script>
+    function redirect_main(){
+        window.location.href = "{% url 'main' %}";
+    };
+    const excluirRotina = async (data) => {
+    const response = await fetch(`/app/${data.rotina_id}/delete_rotina`);
+    const html = await response.text();
+    
+    window.location.href = "{% url 'main' %}";
+    };
+</script>
+{% endblock %}

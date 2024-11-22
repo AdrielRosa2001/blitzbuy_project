@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h1 class="modal-title fs-5" id="verProdutoLabel">{{produto.produto.nome_produto}}</h1>
+  <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <form class="form-edit-produto-list">
+      {% csrf_token %}
+      <input type="hidden" name="fluxo-id" value="{{produto.id}}">
+      <input type="hidden" name="rotina-id" value="{{produto.rotina.id}}">
+      <div class="mb-3 d-flex flex-column">
+        <label for="quantidade-produto" class="form-label">Categoria:</label>
+        <select class="form-select mb-3" name="select-categoria">
+          
+          {% for categoria in categorias %}
+            <option class="categoria-options" {% if produto.produto.categoria.id ==  categoria.id %} selected {% endif %} value="{{categoria.id}}">{{categoria.nome_categoria}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="quantidade-produto" class="form-label">Quantidade:</label>
+        <div class="input-group mb-3">
+          <input type="number" step="0.01" min="0" lang="pt" class="form-control input-quant-produto" id="quant-produto-view" name="quant-produto-view" {% if produto %} value="{{quantidade}}" {% endif %} required>
+          <div class="form-text text-help-quantidade">Insira a quantidade do produto no qual deseja adicionar a lista de compras.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="input-valor-produto" class="form-label">Valor unitario:</label>
+        <input type="number" step="0.01" min="0" lang="pt" class="form-control input-valor-produto" id="valor-produto-view" name="valor-produto-view" {% if produto %} value="{{valor_produto}}" {% endif %} required>
+      </div>
+      <div class="mb-3">
+        <span class="fw-semibold fs-4"> Valor total: R$ {{produto.valor_total_produto|floatformat:2}}</span>
+      </div>
+      <button type="submit" class="btn-adicionar-produto w-100 mb-2 btn btn-success" id="adicionarProdutoBtn" data-bs-dismiss="modal">Salvar</button> <!-- data-bs-dismiss="modal" -->
+      <a type="reset" class="w-100 mb-2 btn btn-danger" data-bs-dismiss="modal" onclick="apagarProduto('{{produto.id}}')">Apagar</a>
+      <button type="reset" class="w-100 mb-2 btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    </form>
+</div>

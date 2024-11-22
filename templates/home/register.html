@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Register - BlitzBuy{% endblock %}
+{% block content %}
+
+<div class="d-flex flex-column" style="min-height: 100vh;">
+    {% include 'home/components/nav_login.html' %}
+    <div class="container d-flex justify-content-center align-items-center mt-3 mb-3" style="flex: 1;">
+        <div class="card border-primary shadow-lg w-100 max-w-md" style="max-width: 400px !important;">
+            <div class="card-body p-4 ps-5 pe-5 mt-3 mb-3">
+                <h2 class="text-center mb-3 text-primary">Registrar-se!</h2>
+    
+                <form class="register-form">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username_input" name="username_input" aria-describedby="usernameHelp" placeholder="Seu username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Primeiro Nome</label>
+                        <input type="text" class="form-control" id="first_name_input" name="first_name_input" aria-describedby="first_nameHelp" placeholder="Seu nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="second_name" class="form-label">Sobre Nome</label>
+                        <input type="text" class="form-control" id="second_name_input" name="second_name_input" aria-describedby="second_nameHelp" placeholder="Seu sobre nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email_input" name="email_input" aria-describedby="emailHelp" placeholder="Seu e-mail" required>
+                    </div>
+                    <div class="">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="password_input" name="password_input" placeholder="Sua senha" required>
+                    </div>
+                    <span class="text-danger w-100" id="feedback-register">
+                        
+                    </span>
+                    <div class="d-grid gap-2 mt-2">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a class="btn btn-outline-primary" href="{% url 'login_page' %}">Logar-se</a>
+                    </div>
+                </form>
+    
+                <!-- <div class="text-center mt-3">
+                    <p>Ou entre com:</p>
+                    <div class="d-flex flex-column justify-content-center">
+                        <button class="btn btn-outline-primary mb-2 fw-semibold">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button class="btn btn-outline-primary fw-semibold">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- Footer -->
+    </div>
+    <footer class="py-4 bg-dark text-white w-100">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 BlitzBuy. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Modais -->
+{% include 'home/components/register/modals/register_success.html' %}
+
+{% endblock %}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script defer src="{% static 'js/home_page/register.js' %}"></script>
+<script>
+    function redirect_to_app(){
+        window.location.href = "{% url 'main' %}";
+    };
+
+    var staticBackdrop = document.getElementById('registerSuccessModal');
+    var myModal = new bootstrap.Modal(staticBackdrop);
+
+    function show_modal(){
+        myModal.show();
+    };
+</script>
+{% endblock %}

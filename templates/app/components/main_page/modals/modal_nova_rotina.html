@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal fade" id="novaRotinaModal" tabindex="-1" aria-labelledby="novaRotinaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="novaRotinaModalLabel">Criar nova rotina:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="form-criar-rotina">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="localDeCompras" class="form-label">Local de compras:</label>
+                  <input type="text" class="form-control" id="localDeCompras" name="localDeCompras" >
+                  <div class="form-text">Insira o local de compra para iniciar a rotina.</div>
+                </div>
+                <button type="submit" class="btn-criar-rotina w-100 mb-2 btn btn-primary" id="createRotinaBtn" data-bs-dismiss="modal">Criar</button>
+                <button type="button" class="w-100 mb-2 btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

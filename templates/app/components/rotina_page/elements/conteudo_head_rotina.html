@@ -1,0 +1,5 @@
+<h2 class="local-rotina-{{rotina.id}} local-rotina-editar fs-5" id="local-rotina-{{rotina.id}}">{{rotina.local_de_compra}}</h2>
+<input type="text" class="form-control local-rotina-input-editar" id="editable-input" value="{{rotina.local_de_compra}}"/>
+<input type="hidden" class="form-control" id="id_rotina_head" value="{{rotina.id}}"/>
+<span style="font-size: 13px;">{{rotina.iniciada_em}}</span>
+<h4><span class="fs-6 fw-normal">Valor Total: </span><span class="badge text-bg-primary" style="font-size: 14px;">R$: {{rotina.valor_total|floatformat:2}}</span></h4>
